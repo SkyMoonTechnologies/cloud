@@ -33,7 +33,9 @@
           }"
           :src="$config.banner"
           class="user-layout-logo"
-          alt="logo">
+          alt="SkyMoon Cloud logo">
+        <h1 class="skymoon-login-title">SkyMoon Cloud</h1>
+        <p class="skymoon-login-subtitle">Manage your cloud resources in one place.</p>
       </div>
       <route-view></route-view>
     </div>
@@ -117,6 +119,7 @@ export default {
   }
 
   &-logo {
+    object-fit: contain;
     border-style: none;
     margin: 0 auto 2rem;
     display: block;
@@ -125,6 +128,21 @@ export default {
       max-width: 300px;
       margin-bottom: 1rem;
     }
+  }
+
+  .skymoon-login-title {
+    margin: 0 0 0.25rem;
+    color: #0B4B6F;
+    font-weight: 700;
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .skymoon-login-subtitle {
+    margin: 0 0 1.75rem;
+    color: #44516A;
+    font-size: 0.875rem;
+    text-align: center;
   }
 
   &-footer {

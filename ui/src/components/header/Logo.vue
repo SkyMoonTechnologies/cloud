@@ -16,21 +16,12 @@
 // under the License.
 
 <template>
-  <div v-if="collapsed && $config.minilogo">
+  <div v-if="$config.logo" class="skymoon-brand" :class="{ 'skymoon-brand-collapsed': collapsed }">
     <img
-      :style="{
-        width: $config.theme['@mini-logo-width'],
-        height: $config.theme['@mini-logo-height']
-      }"
-      :src="$config.minilogo" />
-  </div>
-  <div v-else-if="$config.logo">
-    <img
-      :style="{
-        width: $config.theme['@logo-width'],
-        height: $config.theme['@logo-height']
-      }"
-      :src="$config.logo" />
+      class="skymoon-brand-mark"
+      :src="collapsed ? ($config.minilogo || $config.logo) : $config.logo"
+      alt="SkyMoon Cloud" />
+    <span v-if="!collapsed" class="skymoon-brand-name">SkyMoon <strong>Cloud</strong></span>
   </div>
 </template>
 
@@ -43,7 +34,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'CloudStack',
+      default: 'SkyMoon Cloud',
       required: false
     },
     showTitle: {
@@ -59,3 +50,40 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.skymoon-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 64px;
+  padding: 4px 7px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.skymoon-brand-mark {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.skymoon-brand-name {
+  color: #0B4B6F;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.skymoon-brand-name strong {
+  font-weight: 750;
+}
+
+.skymoon-brand-collapsed {
+  padding: 4px;
+}
+</style>
